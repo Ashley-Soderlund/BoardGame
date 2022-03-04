@@ -1,0 +1,86 @@
+Does score = current position?
+
+1) ask for numberOfPlayers
+2) Initializing players using GameEntry class (3)
+3) Initializing gameName using Scores class (3)
+4) Use code fragment 3.9 for creating the board
+5) While (countPlayersFinished != numberOfPlayers)
+    4.1) player1.setScore() = play(player1.getScore())
+    4.2) player2.setScore() = play(player2.getScore())
+    4.3) player3.setScore() = play(player3.getScore())
+    4.4) if(player1.getScore() == n)
+        4.41) gameName.add(player1)
+        4.42) Call destructor
+        4.43) countPlayersFinished++
+6) display gameName.output() 
+
+
+--------------------------------------------
+
+play
+    1)random number generation 1-6 (cstdlib)
+    2)add parameter value to step1
+    3)temp = negativeFunction(sum of step 1 and two)
+    4) temp = positiveFunction(score)
+    5)return score
+
+*Board:
+Create 2D Dymanic Array of random size
+
+int board[x][y];
+getRandom()
+
+-using a single pointer
+-using an array of pointers
+
+
+Should these be in 4 files? Two .cpp and Two .hpp?
+Game Entry Class
+Scores Class- max entries set to 3
+
+DiceRollFunction():
+on a player's turn return a value of 1-6
+
+*checkIfWin(Class player)-
+
+
+prime number = array of prime numbers or function to check if poition is prime
+     <= 5
+
+int negativeFunction(int score)-
+    checkIfPrime(currentPosition): return result
+    if(result == True):
+       position = position - 5
+       if(position % 7 == 0):
+           score - 8 
+        else:
+            score - 5
+
+    return positve inegter to subtract from current position of player
+
+*int postiveFunction(int score)-
+    check if perfectNumber(currentPosition): return variable result
+    if(result == True:
+
+        if(position % 10 == 0):
+            score= score + 17
+        else:
+            score = score + 15
+
+
+
+    return positive integer that will be added to position
+
+
+Players:
+Should this be a class?
+    private:
+        int currentRolls;
+    public:
+        DiceRollFunction();
+        negativeFunction();
+        postiveFunction();
+        checkifwin();
+
+
+System to run through each player through a turn (Which is rolling a dice)
