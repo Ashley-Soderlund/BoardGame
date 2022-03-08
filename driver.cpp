@@ -132,24 +132,29 @@ void gameBoard(int size){
 
 }
 
-int negativeFunction(int score, int sizeOfBoard){
-    bool prime;                                                         //bool function to say if value is prime or not
-    int temp = score;                                                   //create copy of score in temp variable
-
+bool prime(int score){
     if (score <= 5){                                                    //numbers <= 5 not included in prime for program
-        prime = false;
+        return false;
     }
 
     for(int i = 5; i < score; i++){                                     //starting from 5 until the score, see if a value is prime
         if(score % i == 0){
-            prime = false;
+            return false;
         }
         else{
-            prime = true;
+            return true;
         }
     }
+
+    return false;
+}
+
+int negativeFunction(int score, int sizeOfBoard){       
+    int temp = score;                                                   //create copy of score in temp variable
+
+    bool primeResult = prime(score);
     
-    if(prime == true){                                                    //if value is prime
+    if(primeResult == true){                                                    //if value is prime
        if(score % 7 == 0){                                                //if the remainder of score/7 is 0
            temp = temp - 8;                                               //subtract 8 from current temp value
         } 
@@ -169,31 +174,34 @@ int negativeFunction(int score, int sizeOfBoard){
     return score;
 }
 
-int positiveFunction(int score, int sizeOfBoard){
-    bool perfect;                                                         //bool variable to say if the score is a perfect number or not
+bool perfect(int score){
     int sum = 0;
-    int temp = score;                                                     //create a copy of score in temp variable
-
     for(int i = 1; i < score; i++){                                       //find the sum of a score value to check if it is a perfect number
         if(score % i == 0){                                             
             sum = sum + i;
         }
-    }
+    } 
 
     if(score == sum){                                                     //if sum and score are equal, then it is a perfect number
-        perfect = true;
+        return true;
     }
     else{                                                                 //else, it is not a perfect number
-        perfect = false;
+        return false;
     }
 
-    
+    return false;
+}
 
-    if(perfect == true){                                            //if it is a perfect number
-        if(score % 10 == 0){                                        //and can be divided by 10 with no remainder, then temp gains 17
+int positiveFunction(int score, int sizeOfBoard){
+    int temp = score;                                                     //create a copy of score in temp variable
+
+    bool perfectResult = perfect(score);
+
+    if(perfectResult == true){                                            //if it is a perfect number
+        if(score % 10 == 0){                                              //and can be divided by 10 with no remainder, then temp gains 17
             temp = temp + 17;
         }
-        else{                                                       //if it is a perfect number, but not divisible by 10, then only gain 15
+        else{                                                             //if it is a perfect number, but not divisible by 10, then only gain 15
             temp = temp + 15;
         }
     }
@@ -208,7 +216,6 @@ int positiveFunction(int score, int sizeOfBoard){
 
     return score;
 }
-
 int play(int score, int sizeOfBoard){
     int randomNumber = rand();                               //create a random number
     int diceRoll = (randomNumber % 6 + 1);                   //make dice roll between 1 and 6
