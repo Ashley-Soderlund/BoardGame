@@ -1,3 +1,42 @@
+Part 2:
+
+ inheritance (class GameEntry: public Student)
+
+Operater Overload:
+GameEntry operator <<();
+So we are printing out all GameEntry values with their names and other information from Student?
+Yes print all information
+
+Compare:
+friend function in GameEntry
+pass in 2 players (GameEntry objects) with same game and semester
+*player1 is better than player2 if both gpa and scores of player2 are higher than that of player1
+& vice-versa
+*player1 and player2 have similar performance if both gpa and scores match
+
+Sorting:
+int i = 1;
+    while(i<v.size()){
+        int j=i;
+        while(j>0 && v[j-i] > v[j]){
+            swap(v[j], v[j-1]);
+            j -= 1;
+        }
+        i += 1;
+    }
+
+Needs to be done with gpa and name of student, & output
+
+
+
+
+Have only used terminal to connect with GitHub, so I need to figure out what I need to do with source control.
+
+
+
+
+
+------------------------------------------------------------------------
 Does score = current position?
 
 1) ask for numberOfPlayers

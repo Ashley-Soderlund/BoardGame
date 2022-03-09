@@ -4,7 +4,7 @@
 #include <time.h>
 #include "GameEntry.hpp"
 #include "Scores.hpp"
-using namespace std;
+#include "Student.hpp"
 
 void gameBoard(int sizeOfBoard);
 //Pre-condition: size of board that is given by the user
@@ -20,8 +20,7 @@ int positiveFunction(int score, int sizeOfBoard);
 
 int play(int score, int sizeOfBoard);
 //Pre-condition: current score of a player, and size of board given by player
-//Post-condition: returns an updated score after adding the diceRoll then the positiveFunction and negativeFunction
-
+//Post-condition: returns an updated score after adding the diceRoll then the positiveFunction and negativeFunctio
 
 int main(){
     srand(static_cast<unsigned int> (time(0)));                                       //initializing rand() function
@@ -29,21 +28,24 @@ int main(){
     int numberOfPlayers;
     int sizeOfBoard;
 
-    cout << "Enter the number of players (please enter 3)" << endl;                   //get number of players from user
+    cout << "Enter the number of players (please enter 3)" << std::endl;                   //get number of players from user
     cin >> numberOfPlayers;
-    cout << "Enter the highest value of the game board (use perfect squares, ie. 49, 100, 225)" << endl;        //get size of the board
+    cout << "Enter the highest value of the game board (use perfect squares, ie. 49, 100, 225)" << std::endl;        //get size of the board
     cin >> sizeOfBoard;
-    cout << "\n" << endl;
+    cout << "\n" << std::endl;
 
-    GameEntry player1("Ashley", 0, 0);                                                //create player objects
-    GameEntry player2("Jon", 0, 0);
-    GameEntry player3("Seth", 0, 0);
+    GameEntry player1("soccer", 0, 0);                                                //create player objects
+    player1.name = "Ashley";
+    GameEntry player2("nothing", 0, 0);
+    player2.name = "Jon";
+    GameEntry player3("nothing", 0, 0);
+    player3.name = "Seth";
 
     Scores boardGameChampionship(numberOfPlayers);
 
-    cout << "Game Board: " << endl;                                                   //See if you can merge next two lines
+    cout << "Game Board: " << std::endl;                                                   //See if you can merge next two lines
     gameBoard(sizeOfBoard);                                                           //output the game board
-    cout << endl;
+    cout << std::endl;
 
     int p1 = 0;                                                                       //declare and initialize variables
     int p2 = 0;                                                                       //which are used to keep track of
@@ -53,17 +55,17 @@ int main(){
 
     while (countPlayersFinished < numberOfPlayers){                                                 //playing the game until all players have finished
         if(player1.getScore() < sizeOfBoard || player2.getScore() < sizeOfBoard || player3.getScore() < sizeOfBoard){   //scores must be below the size of board to add more to the score
-            cout << "-------------------------------------------" << endl;
-            cout << "                   Round-" << rounds << "\n" << "-------------------------------------------" << endl;
+            cout << "-------------------------------------------" << std::endl;
+            cout << "                   Round-" << rounds << "\n" << "-------------------------------------------" << std::endl;
             
             player1.setScore(play(player1.getScore(), sizeOfBoard));                   //set the player score to the resulting value from playing a round
-            cout << "Player 1- " << player1.getScore() << endl;
+            cout << "Player 1- " << player1.getScore() << std::endl;
 
             player2.setScore(play(player2.getScore(), sizeOfBoard));                    //set the player score to the resulting value from playing a round
-            cout << "Player 2- " << player2.getScore() << endl;
+            cout << "Player 2- " << player2.getScore() << std::endl;
 
             player3.setScore(play(player3.getScore(), sizeOfBoard));                    //set the player score to the resulting value from playing a round
-            cout << "Player 3- " << player3.getScore() << endl;
+            cout << "Player 3- " << player3.getScore() << std::endl;
         
             if(player1.getScore() == sizeOfBoard && p1 == 0){                           //when a player reaches 100, their object is added to the Scores object
                 p1++;                                                                   //only enter if statement once.                             
@@ -91,13 +93,14 @@ int main(){
     }
 
 
-    cout << "\n" << "Final Scores: " << endl;
+    cout << "\n" << "Final Scores: " << std::endl;
     boardGameChampionship.output(player1, player2, player3);            //output player's name and total rounds it took to win
 
-    player1.~GameEntry();                                               //deallocation of object's memory
-    player2.~GameEntry();
-    player3.~GameEntry();
+    //player1.~GameEntry();                                               //deallocation of object's memory
+    //player2.~GameEntry();
+    //player3.~GameEntry();
     boardGameChampionship.~Scores();
+    //comparePlayers(player1, player2);
 
     return 0;
 }
@@ -221,7 +224,7 @@ int play(int score, int sizeOfBoard){
     int randomNumber = rand();                               //create a random number
     int diceRoll = (randomNumber % 6 + 1);                   //make dice roll between 1 and 6
 
-    cout << "Dice Roll: " << diceRoll << endl;
+    cout << "Dice Roll: " << diceRoll << std::endl;
 
     int temp = 0;
     if(score + diceRoll <= sizeOfBoard){                    //sum of score a diceRoll must be less than the size of the board to move again
