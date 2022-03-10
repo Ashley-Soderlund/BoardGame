@@ -10,7 +10,7 @@ class Student{
         void setName(std::string valueName);
         void setGPA(float valueGPA);
         void setSemester(int valueSemester);
-        int insertionSort();
+        void insertionSort();
         //~Student();
         std::string name {};
         float gpa {};

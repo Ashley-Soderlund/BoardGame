@@ -6,6 +6,7 @@
 #include "Scores.hpp"
 #include "Student.hpp"
 
+
 void gameBoard(int sizeOfBoard);
 //Pre-condition: size of board that is given by the user
 //Post-condition: outputs board
@@ -28,24 +29,30 @@ int main(){
     int numberOfPlayers;
     int sizeOfBoard;
 
-    cout << "Enter the number of players (please enter 3)" << std::endl;                   //get number of players from user
-    cin >> numberOfPlayers;
-    cout << "Enter the highest value of the game board (use perfect squares, ie. 49, 100, 225)" << std::endl;        //get size of the board
-    cin >> sizeOfBoard;
-    cout << "\n" << std::endl;
+    std::cout << "Enter the number of players (please enter 3)" << std::endl;                   //get number of players from user
+    std::cin >> numberOfPlayers;
+    std::cout << "Enter the highest value of the game board (use perfect squares, ie. 49, 100, 225)" << std::endl;        //get size of the board
+    std::cin >> sizeOfBoard;
+    std::cout << "\n" << std::endl;
 
     GameEntry player1("soccer", 0, 0);                                                //create player objects
     player1.name = "Ashley";
+    player1.gpa = 3.9;
+    player1.semester = 8;
     GameEntry player2("nothing", 0, 0);
     player2.name = "Jon";
+    player2.gpa = 4.0;
+    player2.semester = 8;
     GameEntry player3("nothing", 0, 0);
     player3.name = "Seth";
+    player3.gpa = 3.7;
+    player3.semester = 8;
 
     Scores boardGameChampionship(numberOfPlayers);
 
-    cout << "Game Board: " << std::endl;                                                   //See if you can merge next two lines
+    std::cout << "Game Board: " << std::endl;                                                   //See if you can merge next two lines
     gameBoard(sizeOfBoard);                                                           //output the game board
-    cout << std::endl;
+    std::cout << std::endl;
 
     int p1 = 0;                                                                       //declare and initialize variables
     int p2 = 0;                                                                       //which are used to keep track of
@@ -55,17 +62,17 @@ int main(){
 
     while (countPlayersFinished < numberOfPlayers){                                                 //playing the game until all players have finished
         if(player1.getScore() < sizeOfBoard || player2.getScore() < sizeOfBoard || player3.getScore() < sizeOfBoard){   //scores must be below the size of board to add more to the score
-            cout << "-------------------------------------------" << std::endl;
-            cout << "                   Round-" << rounds << "\n" << "-------------------------------------------" << std::endl;
+            std::cout << "-------------------------------------------" << std::endl;
+            std::cout << "                   Round-" << rounds << "\n" << "-------------------------------------------" << std::endl;
             
             player1.setScore(play(player1.getScore(), sizeOfBoard));                   //set the player score to the resulting value from playing a round
-            cout << "Player 1- " << player1.getScore() << std::endl;
+            std::cout << "Player 1- " << player1.getScore() << std::endl;
 
             player2.setScore(play(player2.getScore(), sizeOfBoard));                    //set the player score to the resulting value from playing a round
-            cout << "Player 2- " << player2.getScore() << std::endl;
+            std::cout << "Player 2- " << player2.getScore() << std::endl;
 
             player3.setScore(play(player3.getScore(), sizeOfBoard));                    //set the player score to the resulting value from playing a round
-            cout << "Player 3- " << player3.getScore() << std::endl;
+            std::cout << "Player 3- " << player3.getScore() << std::endl;
         
             if(player1.getScore() == sizeOfBoard && p1 == 0){                           //when a player reaches 100, their object is added to the Scores object
                 p1++;                                                                   //only enter if statement once.                             
@@ -93,14 +100,14 @@ int main(){
     }
 
 
-    cout << "\n" << "Final Scores: " << std::endl;
+    std::cout << "\n" << "Final Scores: " << std::endl;
     boardGameChampionship.output(player1, player2, player3);            //output player's name and total rounds it took to win
 
     //player1.~GameEntry();                                               //deallocation of object's memory
     //player2.~GameEntry();
     //player3.~GameEntry();
     boardGameChampionship.~Scores();
-    //comparePlayers(player1, player2);
+    comparePlayers(player3, player2);
 
     return 0;
 }
@@ -122,14 +129,14 @@ void gameBoard(int size){
 
     int row = 0;                                                       //output array backwards from highest value to 1
     for (int i = size-1; i >= 0; i--){
-        cout << A[i] << " ";
+        std::cout << A[i] << " ";
         row++;
         if(row % M == 0){
             cout << "\n";
         }
     }
 
-    cout << "\n" << "\n";
+    std::cout << "\n" << "\n";
 
     delete[] A;                                                         //dealocate memory for the dynamic 2D array
 

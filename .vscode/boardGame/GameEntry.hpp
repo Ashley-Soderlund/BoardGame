@@ -5,7 +5,7 @@
 
 class GameEntry: public Student {
 public:
-    GameEntry(const std::string& n="", int s=0, int r=0);
+    GameEntry(const std::string& n="", int s=0, int r=0);           //is there a better way to make a constructor that add Student member variables?
     //GameEntry(Student s) : Student(s) {}
     std::string getName() const;
     int getScore() const;
@@ -15,17 +15,13 @@ public:
     void setScore( int score1);
     void setRound(int roundTotal);
     void setSportName(std::string sportName1);
-    //void GameEntry::operator<<(const GameEntry& game);
-    //friend void comparePlayers(GameEntry& game1, GameEntry& game2);
+    //void GameEntry::operator<<(std::ostream& out, const GameEntry& game);     overloading the operator is not working, "too many paramaters"
+    //friend ostream& operator<<(std::ostream& out, const GameEntry& game);       "cannot overload functions"
+    friend void comparePlayers(GameEntry& game1, GameEntry& game2);
     //~GameEntry();
 private:
-    //string name;
     std::string sportName;
     int score;
     int roundTotal;
-
 };
 
-//void comparePlayers(GameEntry& game1, GameEntry& game2){
-    //cout << "Works";
-//};

@@ -19,9 +19,24 @@ void Student::setSemester(int valueSemester){                       //sets the s
     semester = valueSemester;
 }
 
-//int Student::insertionSort(){
+void Student::insertionSort(){
+    //get all objects and take the student's name and gpa and place them into an array
+    //work through insertion sort to move values around
+    
 
-//}
+    //How???? Get total number of players then somehow use player_.getName() with _ meaning an iterator
+    //of numbers 1 to total number of players?
+}
+//int i = 1;
+  //  while(i<v.size()){
+    //    int j=i;
+      //  while(j>0 && v[j-i] > v[j]){
+        //    swap(v[j], v[j-1]);
+          //  j -= 1;
+        //}
+        //i += 1;
+    //}
+    
 
 
 //Student::~Student(){
