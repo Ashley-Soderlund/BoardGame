@@ -117,7 +117,7 @@ int main(){
     std::cout << player1;
     std::cout << player2;
     std::cout << player3;
-
+    
     return 0;
 }
 

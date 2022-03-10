@@ -47,7 +47,11 @@ void comparePlayers(GameEntry& game1, GameEntry& game2){
 };
 
 void operator << (std::ostream& os, const GameEntry& game){
-        std::cout << game.getName() << std::endl;
+        std::cout << game.getName() << ":" <<std::endl;
+        std::cout << "GPA- " <<  game.getGPA() << std::endl;
+        std::cout << "Semester- " <<  game.getSemester() << std::endl;
+        std::cout << "Sport- " <<  game.getSportName() << std::endl;
+        std::cout << "Score from Board Game- " <<  game.getRound() << "\n" << std::endl;
 }
 
 //GameEntry::~GameEntry(){       //Destructor
