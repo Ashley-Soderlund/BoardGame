@@ -11,13 +11,11 @@ public:
     int getScore() const;
     int getRound() const;
     std::string getSportName() const;
-    void output(GameEntry& game) const;
     void setScore( int score1);
     void setRound(int roundTotal);
     void setSportName(std::string sportName1);
-    //void GameEntry::operator<<(std::ostream& out, const GameEntry& game);     overloading the operator is not working, "too many paramaters"
-    //friend ostream& operator<<(std::ostream& out, const GameEntry& game);       "cannot overload functions"
-    friend void comparePlayers(GameEntry& game1, GameEntry& game2);
+    friend void comparePlayers(GameEntry& game1, GameEntry& game2);                //compares two player objects based on their gpa and game score
+    friend void operator << (std::ostream& os, const GameEntry& game);             //overloading the '<<' operator to print out an object
     //~GameEntry();
 private:
     std::string sportName;

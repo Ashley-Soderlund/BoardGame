@@ -2,11 +2,6 @@
 #include "GameEntry.hpp"
 
 
-void GameEntry::output(GameEntry& game) const{                        //outputs name and score of an object
-    std::cout << "The game name is: " << game.getName() << std::endl;
-    std::cout << "The game score is: " << game.getScore() << std::endl;
-}
-
 GameEntry::GameEntry(const std::string& n, int s, int r): sportName(n), score(s), roundTotal(r){}    //constructor
 
 std::string GameEntry::getName() const {return name;}                    //gets the name paramater of an object
@@ -28,9 +23,10 @@ void GameEntry::setSportName(std::string sportName1){  //sets the sport name val
 }
 
 void comparePlayers(GameEntry& game1, GameEntry& game2){
-    //both players have the same sport and semester
+
+    std::cout << "Comparing two players based on their gpa and game score:" << std::endl;
+
     if(game1.getSportName() == game2.getSportName() && game1.getSemester() == game2.getSemester()){
-        //if 1 player has better gpa and scores, then player1 is better
         if(game1.getScore() >= game2.getScore() && game1.getGPA() >= game2.getGPA()){
             std::cout << "The player " << game1.getName() << " is better than " << game2.getName() << std::endl;
         }
@@ -45,14 +41,14 @@ void comparePlayers(GameEntry& game1, GameEntry& game2){
         }
     }
     else{
-        std::cout << "These players cannot be compared." << std::endl;
+        std::cout << "These players cannot be compared because their semester and sport are not the same." << std::endl;
     }
+    std::cout << std::endl;
 };
 
-//void GameEntry::operator<<(std::ostream& out, const GameEntry& game){
-    //Student::GameEntry =(game);
-    //cout << game; 
-//}
+void operator << (std::ostream& os, const GameEntry& game){
+        std::cout << game.getName() << std::endl;
+}
 
 //GameEntry::~GameEntry(){       //Destructor
   //  delete[] &name, score;

@@ -107,7 +107,16 @@ int main(){
     //player2.~GameEntry();
     //player3.~GameEntry();
     boardGameChampionship.~Scores();
+
     comparePlayers(player3, player2);
+    comparePlayers(player1, player2);
+
+    std::cout << "Player Information:" << std::endl;
+    std::cout << "___________________________" << std::endl;
+    std::cout << "___________________________ \n" << std::endl;
+    std::cout << player1;
+    std::cout << player2;
+    std::cout << player3;
 
     return 0;
 }
