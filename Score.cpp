@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Scores.hpp"
+#include "Score.hpp"
 
 
 Scores::Scores(int maxEnt){                           //constuctor 
@@ -35,4 +35,5 @@ void Scores::add(const GameEntry& e){                                           
         i--;
     }
     entries[i+1] = e;
+
 }
