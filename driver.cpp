@@ -3,8 +3,8 @@
 #include <cmath>
 #include <time.h>
 #include "GameEntry.hpp"
-#include "Scores.hpp"
-#include "Student.hpp"
+#include "Score.hpp"
+#include "Students.hpp"
 
 
 void gameBoard(int sizeOfBoard);
@@ -35,18 +35,21 @@ int main(){
     std::cin >> sizeOfBoard;
     std::cout << "\n" << std::endl;
 
-    GameEntry player1("soccer", 0, 0);                                                //create player objects
-    player1.name = "Ashley";
-    player1.gpa = 3.9;
-    player1.semester = 8;
-    GameEntry player2("nothing", 0, 0);
-    player2.name = "Jon";
-    player2.gpa = 4.0;
-    player2.semester = 8;
-    GameEntry player3("nothing", 0, 0);
-    player3.name = "Seth";
-    player3.gpa = 3.7;
-    player3.semester = 8;
+     GameEntry player1("soccer", 0, 0);                                                //create player objects
+     player1.name = "Ashley";
+     player1.gpa = 3.9;
+     player1.semester = 8;
+     GameEntry player2("nothing", 0, 0);
+     player2.name = "Jon";
+     player2.gpa = 4.0;
+     player2.semester = 8;
+     GameEntry player3("nothing", 0, 0);
+     player3.name = "Seth";
+     player3.gpa = 3.7;
+     player3.semester = 8;
+    //GameEntry player1("Ashley", 3.9, 8, "soccer", 0, 0);                        This Constructor Ran Into Errors When Compiling
+    //GameEntry player2("Jon", 4.0, 8, "nothing", 0, 0);
+    //GameEntry player3("Seth", 3.8, 8, "nothing", 0, 0);
 
     Scores boardGameChampionship(numberOfPlayers);
 
@@ -100,24 +103,26 @@ int main(){
     }
 
 
-    std::cout << "\n" << "Final Scores: " << std::endl;
+    std::cout << "\n" << "Final Scores (Turns to Get to End of Board): " << std::endl;
     boardGameChampionship.output(player1, player2, player3);            //output player's name and total rounds it took to win
 
     //player1.~GameEntry();                                               //deallocation of object's memory
     //player2.~GameEntry();
     //player3.~GameEntry();
-    boardGameChampionship.~Scores();
+    //boardGameChampionship.~Scores();
 
-    comparePlayers(player3, player2);
-    comparePlayers(player1, player2);
+    comparePlayers(player3, player2);                                   //A compare function that takes two players
+    comparePlayers(player1, player2);                                   //and says which one is better based on score and gpa
 
-    std::cout << "Player Information:" << std::endl;
+    std::cout << "Player Information:" << std::endl;                     //Output through overloaded operator '<<'
     std::cout << "___________________________" << std::endl;
     std::cout << "___________________________ \n" << std::endl;
     std::cout << player1;
     std::cout << player2;
     std::cout << player3;
 
+    //boardGameChampionship.insertionSort(boardGameChampionship);           //Insertion sort, unable to get working
+    
     return 0;
 }
 
