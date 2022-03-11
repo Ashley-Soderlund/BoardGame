@@ -1,12 +1,14 @@
 #include <iostream>
-#include "Student.hpp"
+#include "Students.hpp"
 #pragma once
 
 
-class GameEntry: public Student {
+class GameEntry: public Student {          //GameEntry inherited from Student Class
 public:
-    GameEntry(const std::string& n="", int s=0, int r=0);           //is there a better way to make a constructor that add Student member variables?
-    //GameEntry(Student s) : Student(s) {}
+    //GameEntry();
+    //GameEntry(const std::string& n="", float g=0.0, int s=0, const std::string& sn="", int sc=0, int r=0);    
+    
+    GameEntry(const std::string& n="", int s=0, int r=0);                         //Constructor
     std::string getName() const;
     int getScore() const;
     int getRound() const;
@@ -22,4 +24,3 @@ private:
     int score;
     int roundTotal;
 };
-
