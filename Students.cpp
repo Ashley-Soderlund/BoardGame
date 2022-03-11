@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Student.hpp"
+#include "Students.hpp"
 
 Student::Student(const std::string& n, float g, int s): name(n), gpa(g), semester(s){}                  //constructor
 
@@ -19,14 +19,13 @@ void Student::setSemester(int valueSemester){                       //sets the s
     semester = valueSemester;
 }
 
-void Student::insertionSort(){
-    //get all objects and take the student's name and gpa and place them into an array
-    //work through insertion sort to move values around
-    
+//void Student::insertionSort(const GameEntry& players){              Attempted in separate program, unable to impliment here
+    //if players[i].getGPA() 
 
-    //How???? Get total number of players then somehow use player_.getName() with _ meaning an iterator
-    //of numbers 1 to total number of players?
-}
+//}
+
+
+
 //int i = 1;
   //  while(i<v.size()){
     //    int j=i;
