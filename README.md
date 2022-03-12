@@ -26,21 +26,41 @@ Implimentation of: `std::cout & std::endl` <br>
 ## File Descriptions
 
 ### driver.cpp
-
+The main file that calls all functions and classes. It drives the board game through various functions. The header includes all .hpp files and the libraries `<iostream>` `<stdlib.h` `<cmath` and `<time.h>` (which is a C library that will be changed to `<ctime>` at a later date).
+- `gameBoard()`: The input provided by the user will decide the size of the board, but the input has to be able to form an equal square after divided. A two-dimensional dynamic array will then be created and outputted to the terminal with number counting from 0 to userInput.
+- `negativeFunction()`: Takes the paramaters of the curent score (position on the board) and the size of the board. Calls `prime()` to check if the new position after the dice roll is a perfect number.
+  - If the number is prime and can be divided by 7 with no remainder, 8 is subtracted from the score.
+  - If the number is prime and cannot be divided by 7 with no remainder, 5 is subtracted from the score.
+  - Else, nothing is subtracted.
+  - As long as the score with the dice roll and additions is below the size of the board, the value is added to the score and returned.
+- `positiveFunction()`: Takes the paramaters of the curent score (position on the board) and the size of the board. Calls `perfect()` to check if the new position after the dice roll is a perfect number.
+  - If number is perfect and divides by 10 without a remainder, 17 is added to the score.
+  - If number is perfect but 10 doesn't divide without a remainder, 15 is added to the score.
+  - Else, nothing is added.
+  - As long as the score with the dice roll and additions is below the size of the board, the value is added to the score and returned.
+- `play()`: Takes the paramaters of the curent score (position on the board) and the size of the board. It then runs through the turn of a player (cycling from the 1st to the next and so on, until players are out then start loop back over). A turn consists of rolling a dice and recieving a number (1-6), moving to a new position on the board, calling `negativeFunction()` and `positiveFunction()` to see if score is boosted or dropped, and then returning the score that will be then set to the current player's object.
+- `perfect()`: Checks if the current score is a perfect number or not and returns true of false to `positiveFunction()`.
+- `prime()`: Checks if the current score is a prime number or not and returns true or false to `negativeFunction()`.
 
 ### GameEntry.hpp
 - Interface file for GameEntry class. This class inherits from the base class Student, and each objects holds a sport's name, score of reaching end of board, number of turns player took to reach the end, and from Student a name, gpa, and semester at school.
 
 ### GameEntry.cpp
 - Implementation file for GameEntry class: defines the constructor & destructor and setter & getter functions. 
-- comparePlayers():
-- Operator Overload `<<`:
+- `comparePlayers()`: Two GameEntry objects are compared if they have the same semester and sport value. 
+  - Then, if the first player has better GPA and least number of round totals to win the board game, they are better.
+  - Else, if the sencond player has better GPA and least number of round totals to win the board game, they are better.
+  - Else, if they are exactly the same, they are equal.
+  - Else, the two players cannot be compared and have no result.
+- Operator Overload `<<`: A GameEntry object can be sent to the output by `std::cout << playerName;`. The result is all information about the player being showed to the user.
 
 ### Score.hpp
-- Interface file for Score class.
+- Interface file for Score class. Class used as a way to store players that have finished the board game through an array.
 
 ### Score.cpp
-- Implementation file for Score class: defines the constructor & destructor and setter & getter functions.
+- Implementation file for Score class: defines the constructor & destructor.
+- `output()`: Uses the GameEntry class to get the name and round total of each player to output to the user.
+- `add()`: GameEntry objects are added into an array once they reach the end of the board to display winners in the output, once all players have finished.
 
 ### Students.hpp
 - Interface file for Student class. It is a base class. A Student object holds a name, gpa, and semester member variables. The functions are all setters and getters for the variables. 
