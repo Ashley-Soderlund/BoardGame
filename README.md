@@ -2,7 +2,7 @@
 
 ## Project Description
 
-*'-' Made By* [@Ashley-Soderlund] (https://github.com/Ashley-Soderlund)
+*- Made By* [@Ashley-Soderlund](https://github.com/Ashley-Soderlund)
 
 ## Usage
 
